@@ -45,7 +45,6 @@ const style = StyleSheet.create({
         marginTop: 10,
         marginBottom: 10,
         padding: 10,
-        width: 300,
         flexWrap: 'nowrap'
     },
 

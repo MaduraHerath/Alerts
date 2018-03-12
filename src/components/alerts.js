@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image, Button, Alert } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, Button, Alert,Dimensions } from 'react-native';
 import AlertActions from './../actions/AlertActions';
 
-
+var width = Dimensions.get('window').width;
 export class Alerts extends React.Component {
     constructor() {
         super();
         this.button = {
             buttonColor: '#9C27B0',
-            buttonTitle: 'Complete'
+            buttonTitle: 'Complete',
+            color:"#212121"
         }
     }
     render() {
@@ -17,6 +18,7 @@ export class Alerts extends React.Component {
                 {this.props.alerts.map((alert, i) => {
                     console.log(alert);
                     return (
+                        <View style={{width: width * 1}}>
                         <View key={i} style={style.card}>
                             <TouchableOpacity onPress={this.deleteAlert.bind(this, alert.id)}>
                                 <Image
@@ -40,9 +42,11 @@ export class Alerts extends React.Component {
                             />*/}
 
                         </View>
+                        </View>
                     )
                 })}
             </View>
+
         )
     }
 
@@ -62,10 +66,10 @@ export class Alerts extends React.Component {
 
     checkStatus(alert) {
         if (alert.isComplete) {
-            return this.button = { buttonColor: '#2196F3', buttonTitle: 'Complete' };
+            return this.button = { buttonColor: '#607D8B', buttonTitle: 'Complete',color:'#212121' };
         }
         else {
-            return this.button = { buttonColor: '#66BB6A', buttonTitle: 'Not Complete' };
+            return this.button = { buttonColor: '#f44336', buttonTitle: 'Not Complete', color:'#212121' };
         }
     }
 
@@ -86,7 +90,6 @@ const style = StyleSheet.create({
         marginTop: 10,
         marginBottom: 10,
         padding: 10,
-        width: 300,
         flexWrap: 'nowrap'
     },
 
@@ -98,9 +101,11 @@ const style = StyleSheet.create({
         right: 0
     },
     text:{
+        alignItems: 'center',
         padding:6,
         margin:10,
-        color:'#455A64'
+        color:'#FAFAFA',
+
     }
 
 })
